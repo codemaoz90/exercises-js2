@@ -14,7 +14,16 @@
  * </div>
  */
 function exerciseOne(arrayOfPeople) {
-  let content = document.querySelector("#content");
+	let content = document.querySelector("#content");
+	arrayOfPeople.forEach((person) => {
+		const h1 = document.createElement("h1");
+		const h2 = document.createElement("h2");
+
+		h1.innerText = person.name;
+		h2.innerText = person.job;
+		content.appendChild(h1);
+		content.appendChild(h2);
+	});
 }
 
 /**
@@ -25,7 +34,18 @@ function exerciseOne(arrayOfPeople) {
  *
  */
 function exerciseTwo(shopping) {
-  //Write your code in here
+	//Write your code in here
+	let content = document.querySelector("#content");
+	let unorderList = document.createElement("ul");
+	console.log(unorderList);
+	shopping.forEach((el) => {
+		const li = document.createElement("li");
+		li.innerText = el;
+		unorderList.appendChild(li);
+		// const li = `<li>${el}</li>`;
+		// unorderList.innerHTML += li;
+	});
+	content.appendChild(unorderList);
 }
 
 /**
@@ -58,7 +78,34 @@ function exerciseTwo(shopping) {
     The end result should look something like this: https://hyf-js2-week1-makeme-ex1-demo.herokuapp.com/
 **/
 function exerciseThree(books) {
-  //Write your code in here
+	//Write your code in here
+	let content = document.querySelector("#content");
+
+	// titulo
+	let title = document.createElement("h1");
+	title.style.textAlign = "center";
+	title.innerText = "BOOK LIST";
+
+	// contenedor books
+	let contentBooks = document.createElement("div");
+	contentBooks.style.display = "flex";
+	contentBooks.style.justifyContent = "space-around";
+	contentBooks.style.alignItems = "center";
+
+	books.forEach((book) => {
+		const displayBooks = `
+    <div style="display:flex; margin:10px;padding:10px;align-items:center; flex-direction:column; height:283px; ${
+			book.alreadyRead ? "background:green" : "background:red"
+		}" >
+    <p>${book.title} - ${book.author} </p>
+    <img src="img/${book.image}" style="text-align:center" width="150px">
+    </div>
+    
+    `;
+		contentBooks.innerHTML += displayBooks;
+	});
+	content.appendChild(title);
+	content.appendChild(contentBooks);
 }
 
 //
@@ -72,9 +119,9 @@ function exerciseThree(books) {
 //
 
 let people = [
-  { name: "Chris", job: "Teacher" },
-  { name: "Joanna", job: "Student" },
-  { name: "Boris", job: "Prime Minister" }
+	{ name: "Chris", job: "Teacher" },
+	{ name: "Joanna", job: "Student" },
+	{ name: "Boris", job: "Prime Minister" },
 ];
 
 exerciseOne(people);
@@ -84,21 +131,24 @@ let shopping = ["Milk", "Break", "Eggs", "A Dinosaur", "Cake", "Sugar", "Tea"];
 exerciseTwo(shopping);
 
 const books = [
-  {
-    title: "The Design of Everyday Things",
-    author: "Don Norman",
-    alreadyRead: false
-  },
-  {
-    title: "The Most Human Human",
-    author: "Brian Christian",
-    alreadyRead: true
-  },
-  {
-    title: "The Pragmatic Programmer",
-    author: "Andrew Hunt",
-    alreadyRead: true
-  }
+	{
+		title: "The Design of Everyday Things",
+		author: "Don Norman",
+		alreadyRead: false,
+		image: "1.jpg",
+	},
+	{
+		title: "The Most Human Human",
+		author: "Brian Christian",
+		alreadyRead: true,
+		image: "2.jpg",
+	},
+	{
+		title: "The Pragmatic Programmer",
+		author: "Andrew Hunt",
+		alreadyRead: true,
+		image: "3.jpg",
+	},
 ];
 
 exerciseThree(books);
