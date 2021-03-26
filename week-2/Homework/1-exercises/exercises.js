@@ -100,7 +100,6 @@ function exerciseThree(books) {
     <p>${book.title} - ${book.author} </p>
     <img src="img/${book.image}" style="text-align:center" width="150px">
     </div>
-    
     `;
 		contentBooks.innerHTML += displayBooks;
 	});
