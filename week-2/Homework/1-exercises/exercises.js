@@ -120,12 +120,15 @@ function exerciseThree(books) {
 			: "background:red";
 
 		const displayBooks = `
+
 		<div class="book" style="${alreadyRead}">
 			<p>
 				${book.title} - ${book.author}
 			</p>
 			<img src="img/${book.image}">
 		</div>
+
+
     `;
 		contentBooks.innerHTML += displayBooks;
 	});
