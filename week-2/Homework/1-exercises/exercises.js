@@ -92,18 +92,45 @@ function exerciseThree(books) {
 	contentBooks.style.justifyContent = "space-around";
 	contentBooks.style.alignItems = "center";
 
+	// Creando stylos en el head.
+	let style = document.createElement("style");
+	let insideStyle = document.createTextNode(`
+		.book {
+			display:flex;
+			margin:10px;
+			padding:30px;
+			align-items:center;
+			flex-direction:column;
+			height:283px;
+		}
+		.book p{
+			color:white;
+		}
+		.book img{
+			text-align:center;
+			width:150px;
+		}
+	`);
+	style.appendChild(insideStyle);
+	document.head.appendChild(style);
+	// Loop de los books
 	books.forEach((book) => {
+		const alreadyRead = book.alreadyRead
+			? "background:green"
+			: "background:red";
+
 		const displayBooks = `
-    <div style="display:flex; margin:10px;padding:10px;align-items:center; flex-direction:column; height:283px; ${
-			book.alreadyRead ? "background:green" : "background:red"
-		}" >
-    <p>${book.title} - ${book.author} </p>
-    <img src="img/${book.image}" style="text-align:center" width="150px">
-    </div>
-    
+		<div class="book" style="${alreadyRead}">
+			<p>
+				${book.title} - ${book.author}
+			</p>
+			<img src="img/${book.image}">
+		</div>
     `;
 		contentBooks.innerHTML += displayBooks;
 	});
+
+	// Añadiendo los tags al contenedor books
 	content.appendChild(title);
 	content.appendChild(contentBooks);
 }
