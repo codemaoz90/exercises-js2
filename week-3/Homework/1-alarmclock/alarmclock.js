@@ -33,7 +33,7 @@ function setup() {
 	});
 
 	document.getElementById("stop").addEventListener("click", () => {
-		pauseAlarm(timeLeft);
+		pauseAlarm();
 	});
 }
 
@@ -41,7 +41,7 @@ function playAlarm() {
 	audio.play();
 }
 
-function pauseAlarm(timeleft) {
+function pauseAlarm() {
 	audio.pause();
 	clearInterval(timerInterval);
 }
